@@ -1,13 +1,12 @@
 #pragma once
 
-#include "ctre/Phoenix.h"
-
+#include <Spark.h>
 class LiftMechanism {
 public:
 
 
-	WPI_TalonSRX *intake;
-	//TalonSRX *lift;
+	frc::Spark *intake;
+	frc::Spark *lift;
 
 	void SetIntake(int number);
 	void Intake(double speed);

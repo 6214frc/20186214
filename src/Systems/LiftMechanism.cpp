@@ -6,19 +6,19 @@ LiftMechanism::LiftMechanism() {
 }
 
 void LiftMechanism::SetIntake(int number) {
-	intake = new WPI_TalonSRX(number);
+	intake = new frc::Spark(number);
 }
 
 void LiftMechanism::Intake(double speed) {
-	LiftMechanism::intake->Set(ControlMode::PercentOutput, speed);
+	LiftMechanism::intake->Set(speed);
 }
 
 void LiftMechanism::SetLift(int number) {
-//	lift = new TalonSRX(number);
+	lift = new frc::Spark(number);
 }
 
 void LiftMechanism::Lift(double speed) {
- //	lift->Set(ControlMode::PercentOutput, speed);
+	lift->Set(speed);
 }
 
 LiftMechanism::~LiftMechanism() {
