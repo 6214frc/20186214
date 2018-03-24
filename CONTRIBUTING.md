@@ -29,4 +29,9 @@ If you haven't already now would be a good time to create a [GitHub](https://git
 In order to fork a repository one must go to the main page of the repository (in our case [here](https://github.com/6214frc/20186214)) and press the "Fork" button on the top right of the page. This only needs to be done **once** doing it again will create another fork which is pretty useless for what we are doing. This will create a *copy* of the code on ***your*** account so that you can edit and mess around with things without messing up the main repository of code. Later, you can find your code at https://github.com/USERNAME/20186214 where USERNAME is your username.
 
 ### Downloading the forked code
-WIP. I'M TIRED AND THIS NEEDS TO BE DONE BY SOMEONE ELSE DANGIT
+Open up a file browser and go to wherever you want to put the code. If you installed git properly you should be able to right click on the empty space and click on the button that says "Git Bash Here" This will open up what is called a "Bash console" this will allow you to download the code and update it when you need to. 
+
+*Downloading*
+```bash
+git clone https://github.com/USERNAME/20186214.git
+```
