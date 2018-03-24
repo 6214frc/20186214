@@ -1,14 +1,13 @@
 #include <math.h>
 #include <WPIlib.h>
 #include <Spark.h>
-#include <Systems/MyMecanumDrive.h>
+#include "MyMecanumDrive.h"
 
-void MyMecanumDrive::setWheels(int fl, int fr, int bl, int br) {
+MyMecanumDrive::MyMecanumDrive(int fl, int fr, int bl, int br) {
     FL = new frc::Spark(fl);
     FR = new frc::Spark(fr);
     BL = new frc::Spark(bl);
     BR = new frc::Spark(br);
-
 }
 
 void MyMecanumDrive::setPolarity(int flp, int frp, int blp, int brp) {
@@ -57,16 +56,15 @@ void MyMecanumDrive::drive(float x, float y, float z) {
         MyMecanumDrive::BR->Set(x * MyMecanumDrive::BRP * -1);
         break;
     case cz:
-        MyMecanumDrive::FL->Set(z * MyMecanumDrive::FLP);
+        MyMecanumDrive::FL->Set(z * MyMecanumDrive::FLP * -1);
         MyMecanumDrive::FR->Set(z * MyMecanumDrive::FRP);
-        MyMecanumDrive::BL->Set(z * MyMecanumDrive::BLP * -1);
+        MyMecanumDrive::BL->Set(z * MyMecanumDrive::BLP);
         MyMecanumDrive::BR->Set(z * MyMecanumDrive::BRP * -1);
         break;
     default:
-        MyMecanumDrive::FL->Set(0);
-        MyMecanumDrive::FR->Set(0);
-        MyMecanumDrive::BL->Set(0);
-        MyMecanumDrive::BR->Set(0);
+        FL->Set(0);
+        FR->Set(0);
+        BL->Set(0);
+        BR->Set(0);
     }
-    Wait(0.005);
 }

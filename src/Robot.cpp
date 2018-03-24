@@ -9,11 +9,11 @@
 int INTAKE_ID1 = 4;
 
 
-double INTAKE_SPEED_IN = 1;
-double INTAKE_SPEED_OUT = -1;
+double INTAKE_SPEED_IN = .4;
+double INTAKE_SPEED_OUT = -.4;
 
-double LIFT_SPEED_UP = .5;
-double LIFT_SPEED_DOWN = -.25;
+double LIFT_SPEED_UP = .7;
+double LIFT_SPEED_DOWN = -.35;
 
 double DEADZONE = .2;
 
@@ -49,9 +49,8 @@ public:
      * This is done once and will not happen again until the robot code is restarted.**/
     void RobotInit() override {
         //Setting the drive system variables.
-        drive = new MyMecanumDrive;
+        drive = new MyMecanumDrive(2,3,0,1);
         drive->threshold = DEADZONE;
-        drive->setWheels(2,3,1,0);
         drive->setPolarity(-1, 1, 1, -1);
 
         //Setting the Lift system variables.
@@ -76,7 +75,7 @@ public:
     }
 
     void AutonomousPeriodic() override {
-        if (time->Get() <= 3.0) {
+        if (time->Get() <= 2.5) {
             drive->drive(0.0, -.75, 0.0);
         } else {
             drive->drive(0.0,0.0,0.0);
@@ -91,7 +90,7 @@ public:
 
     void TeleopPeriodic() override {
 
-        //drive->drive(stick->GetX(), stick->GetY(), stick->GetTwist());
+        drive->drive(stick->GetX(), stick->GetY(), stick->GetTwist());
 
         if (stick->GetRawButton(1) ) {
             lift->Intake(INTAKE_SPEED_IN);
