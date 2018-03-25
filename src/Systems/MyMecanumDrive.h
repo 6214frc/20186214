@@ -23,7 +23,8 @@ public:
 
 
 
-    void drive(float x, float y, float z); //X and Z are the ones that are important Y = forward/back X = LeftRight
-    MyMecanumDrive(int fl, int fr, int bl, int br);
+    void drive(float x, float y, float z); //X and Y are the ones that are important Y = forward/back X = LeftRight
     virtual ~MyMecanumDrive();
+    
 };
+

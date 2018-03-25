@@ -7,16 +7,17 @@
 
 /**VARIABLES FOR MILLIE TO CHANGE**/
 int INTAKE_ID1 = 4;
-
+int CLIMB_ID = 12345;
 
 double INTAKE_SPEED_IN = .4;
-double INTAKE_SPEED_OUT = -.4;
+double INTAKE_SPEED_OUT = -.8;
 
 double LIFT_SPEED_UP = .7;
 double LIFT_SPEED_DOWN = -.35;
 
-double DEADZONE = .2;
+double CLIMB_INTAKE_SPEED = 1;
 
+double DEADZONE = .2;
 
 
 #include <iostream>
@@ -49,8 +50,9 @@ public:
      * This is done once and will not happen again until the robot code is restarted.**/
     void RobotInit() override {
         //Setting the drive system variables.
-        drive = new MyMecanumDrive(2,3,0,1);
+        drive = new MyMecanumDrive;
         drive->threshold = DEADZONE;
+        drive->setWheels(2,3,0,1);
         drive->setPolarity(-1, 1, 1, -1);
 
         //Setting the Lift system variables.
@@ -89,7 +91,7 @@ public:
     }
 
     void TeleopPeriodic() override {
-
+        
         drive->drive(stick->GetX(), stick->GetY(), stick->GetTwist());
 
         if (stick->GetRawButton(1) ) {
@@ -106,6 +108,10 @@ public:
             lift->Lift(LIFT_SPEED_DOWN);
         } else {
             lift->Lift(0);
+        }
+        
+        if (stick->GetRawButton(CLIMB_BUTTON) {
+            lift->Climb(CLIMB_INTAKE_SPEED);
         }
 
     }
@@ -128,3 +134,5 @@ public:
 };
 
 START_ROBOT_CLASS(Robot)
+
+
