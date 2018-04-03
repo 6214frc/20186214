@@ -7,7 +7,7 @@
 
 /**VARIABLES FOR MILLIE TO CHANGE**/
 int INTAKE_ID1 = 4;
-int CLIMB_ID = 12345;
+int CLIMB_ID = 5;
 
 double INTAKE_SPEED_IN = .4;
 double INTAKE_SPEED_OUT = -.8;
@@ -56,7 +56,7 @@ public:
         drive->setPolarity(-1, 1, 1, -1);
 
         //Setting the Lift system variables.
-        lift = new LiftMechanism(9, INTAKE_ID1);
+        lift = new LiftMechanism(9, INTAKE_ID1, CLIMB_ID);
         stick = new Joystick(0);
     }
 
@@ -109,11 +109,9 @@ public:
         } else {
             lift->Lift(0);
         }
-        
-        if (stick->GetRawButton(CLIMB_BUTTON) {
+        if (stick->GetRawButton(6)) {
             lift->Climb(CLIMB_INTAKE_SPEED);
-        }
-
+        } else { lift->Climb(0); }
     }
 
     /**Test is just an extra mode that you can use to test something without nessisairly
