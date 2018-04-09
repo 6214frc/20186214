@@ -1,20 +1,21 @@
 #pragma once
 
-#include "ctre/Phoenix.h"
+#include <Spark.h>
 
 class LiftMechanism {
 public:
 
 
-	WPI_TalonSRX *intake;
-	//TalonSRX *lift;
+    frc::Spark *intake;
+    frc::Spark *lift;
+    frc::Spark *climb;
 
-	void SetIntake(int number);
-	void Intake(double speed);
+    void Intake(double speed);
 
-	void SetLift(int number);
-	void Lift(double speed);
+    void Lift(double speed);
+    
+    void Climb(double speed);
 
-	LiftMechanism();
-	virtual ~LiftMechanism();
+    LiftMechanism(int LiftID, int IntakeID, int ClimbID);
+    virtual ~LiftMechanism();
 };

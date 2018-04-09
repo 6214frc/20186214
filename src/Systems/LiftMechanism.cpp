@@ -1,28 +1,26 @@
-#include <LiftMechanism.h>
+#include "LiftMechanism.h"
+#include <Spark.h>
 
-LiftMechanism::LiftMechanism() {
-	// TODO Auto-generated constructor stub
-
-}
-
-void LiftMechanism::SetIntake(int number) {
-	intake = new WPI_TalonSRX(number);
+LiftMechanism::LiftMechanism(int LiftID, int IntakeID, int ClimbID) {
+    intake = new frc::Spark(IntakeID);
+    lift = new frc::Spark(LiftID);
+    climb = new frc::Spark(ClimbID);
 }
 
 void LiftMechanism::Intake(double speed) {
-	LiftMechanism::intake->Set(ControlMode::PercentOutput, speed);
-}
-
-void LiftMechanism::SetLift(int number) {
-//	lift = new TalonSRX(number);
+    intake->Set(speed);
 }
 
 void LiftMechanism::Lift(double speed) {
- //	lift->Set(ControlMode::PercentOutput, speed);
+    lift->Set(speed);
 }
 
+void LiftMechanism::Climb(double speed) {
+    climb->Set(speed);
+}
+
+
 LiftMechanism::~LiftMechanism() {
-	// TODO Auto-generated destructor stub
-	delete intake;
+    // TODO Auto-generated destructor stub
 }
 
